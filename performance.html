@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance</title>
+</head>
+<body>
+</style><link rel="stylesheet" href="style.css">
+
+<h1 style="text-align:center">P.SAMD</h1>
+
+<!-- Horizontal menu -->
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="dbs.html">Databases</a>
+    <a href="model.html">Model</a>
+    <a href="performance.html" class="active">Performance</a>
+</div>
+
+<h1 style="text-align:center">Performance</h1>
+
+<h2>Development Phase 1: October 2023</h2>
+
+<!-- Table of run results -->
+<table border="1" style="border-collapse: collapse; margin: 0 auto">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Model</th>
+            <th>Training details</th>
+            <th>Train DB</th>
+            <th>Validation DB</th>
+            <th>Validation r</th>
+            <th>Validation rmse</th>
+            <th>Test DB 1 r</th>
+            <th>Test DB 1 rmse</th>
+            <th>Test DB 1 rmse*</th>
+            <th>Test DB 2 r</th>
+            <th>Test DB 2 rmse</th>
+            <th>Test DB 2 rmse*</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>29.10.2023</td>
+            <td>V1.1 <br>dev-psamd-2_20231028_025001 (_2.pt)</td>
+            <td><strong>Device:</strong> MacBook Pro (Wafaa's old) CPU only<br>
+                <strong>Batch size:</strong> 64 <strong>Num_workers:</strong> 4 <br>
+                <strong>Epochs:</strong>Total run of 3 epochs, best was the 2nd epoch <br>
+                <strong>Duration:</strong>All 3 epochs took approx. 43 hours, best epoch took 
+                approx. 13.5 hours</td>
+            <td>NISQA_TRAIN_SIM, NISQA_TRAIN_LIVE (10,020)</td>
+            <td>NISQA_VAL_SIM, NISQA_VAL_LIVE (2,700)</td>
+            <td>0.867</td>
+            <td>0.573</td>
+        </tr>
+        
+    </tbody>
+</table>
+
+<div>
+
+    <h2>P-1401</h2>
+    <a href="https://www.itu.int/rec/T-REC-P.1401/en">Methods, metrics and procedures for statistical evaluation, qualification and comparison of objective quality prediction models</a>
+
+    <ul>
+        <li>It is recommended that the development (training, testing), validation and evaluation of the objective
+            algorithms' databases evenly and equally cover both simulated and live network conditions</li>
+        <li>It is strongly recommended to select databases for evaluation that reflect the use cases of the objective
+            prediction method.</li>
+        <li>For avoiding biases between simulations and real field data, the evaluation set should
+            contain databases where simulated and real field data are mixed in the same experiment.</li>
+        <li>The quality of the test samples used in each subjective experiment should allow the voters to use the
+            entire MOS scale.</li>
+        <li>It is recommended that prior to analysis, an inspection of the subjective and objective test data be
+            performed to uncover any types of outliers. Example: time clipping effect.</li>
+        <li>The group of people remains the same during the experiment, and the stimuli, that is, the 'context',
+            covers the same range of test conditions for everyone in the group. The average of the individual
+            scores per-sample or per-test condition forms the MOS. The MOS is an average with a certain
+            statistical uncertainty, since not all people will mark the sample with exactly the same score.</li>
+        <li>Scaling</li>
+        
+    </ul>
+</div>
+
+</body>
+</html>

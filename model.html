@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model</title>
+</head>
+<body>
+</style><link rel="stylesheet" href="style.css">
+
+<h1 style="text-align:center">P.SAMD</h1>
+
+<!-- Horizontal menu -->
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="dbs.html">Databases</a>
+    <a href="model.html" class="active">Model</a>
+    <a href="performance.html">Performance</a>
+</div>
+
+<h1 style="text-align:center">Model</h1>
+
+<h2><u>Upstream model</u></h2>
+
+<h3>XLS-R Feature Extractor</h3>
+<p>The paper <a href="https://arxiv.org/abs/2006.13979">Unsupervised Cross-lingual Representation Learning for Speech Recognition</a> describes 
+    the XLS-R model and its feauture extractor.</p>
+
+<p>Wave2Vec 2.0, including the XLS-R variant, extracts features from raw audio waveforms using a deep neural network architecture based on a 
+    self-supervised learning approach. The model processes the raw audio waveforms to learn meaningful representations directly from the audio signal. 
+    Here's how Wave2Vec 2.0 typically extracts features from WAV files:</p>
+
+<ol>
+    <li>Feature Extraction with Convolutional Neural Networks (CNNs): <br>
+        Wave2Vec 2.0 employs a series of convolutional layers to process the raw audio waveforms. The convolutional neural network operates on small 
+        chunks of the waveform, capturing local patterns in the audio signal.
+    </li>
+    <li>Contrastive Learning (Self-Supervised Learning)</li>
+    <li>Strided Convolutional Layers, with Pooling and Aggregation</li>
+    <li>Hierarchical and Final Feature Representations</li>
+</ol>
+
+<p>The pretrained feature extractor of Wave2Vec 2.0 can handle audio of varying duration during inference. While the model was trained on fixed-length 
+    segments of 800 milliseconds with a 400 ms overlap, this does not restrict the model's ability to process audio signals of different durations 
+    during the inference phase.
+</p>
+
+<p>Layer output processing: whether to pool and reduce the final tensor size or keep all the layer vectors stacked without losing any layer information.
+    3 verrsions of the feature extractor can be explored:</p>
+
+<ul>
+    <li>No layer aggregation</li>
+    <li>Average-pooling the layers</li>
+    <li>Max-pooling the layers</li>
+</ul>
+
+<p>Disadvantage: downsampling audio from 48kbps to 16kbps can alter the high-frequency content, spectral balance, introduce artifacts, and 
+    impact psychoacoustic cues, all of which can lead to changes in the perceived coloration of the audio. </p>
+
+<h3>Mel-Spectrogram</h3>
+<p>TBD</p>
+
+<h3>MFCC</h3>
+<p>TBD</p>
+
+<h2><u>Downstream model</u></h2>
+
+<h2><u>Development variants</u></h2>
+
+<ol>
+    <li>
+        <strong>V1:</strong> <br>
+        <u>Upstream:</u> XLS-R feature extractor (all 7 CNN layer feature vectors) <br>
+        Input shape: waveform -> Feature extraction -> torch.Size([7, 449, 1024]) -> slicing -> torch.Size([7, 200, 1024]) -> flattening -> torch.Size([1433600]). <br>
+        <u>Downstream:</u> Linear regressor with simple topology: Linear(1433600, 512) -> ReLU() -> Linear(512, 256) -> ReLU() -> Linear(256, 5)
+    </li>
+</ol>
+
+</body>
+</html>
