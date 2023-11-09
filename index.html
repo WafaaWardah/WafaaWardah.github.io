@@ -15,11 +15,104 @@
         <a href="index.html" class="active">Home</a>
         <a href="dbs.html">Databases</a>
         <a href="model.html">Model</a>
+        <a href="training.html">Training</a>
         <a href="performance.html">Performance</a>
     </div>
 
     <p style="text-align:center">Non-intrusive Speech Quality Assessment model development</p>
-    <p style="text-align:center">(This site is still being worked on. Please check again for updated content.)</p>
+    
+    <div>
+
+        <h3><u>May 2019</u></h3>
+        <p><strong>P.SAMD interim results and intended next steps</strong> [SG12-C383 by Mittag & Möller]</p>
+        <ul>
+            <li>Presented performance results of P.SAMD for single-ended and diagnostic speech quality 
+                model</li>
+            <li>Results for perceptual quality dimensions: Noisiness, Coloration, Discontinuity, Loudness</li>
+            <li>Promising results; tested on common P.800 double sentences</li>
+            <li>Planned next steps: generation of P.SAMD specific databases from conversational speech 
+                samples</li>
+            <li>Planning experiments with conversational reference speech files</li>
+            <li>Model architecture not final, subject to change with more training data</li>
+            <li>End-to-end approach may be feasible, making CNN network and P.OLQA per-frame-similarity 
+                training unnecessary</li>
+            <li>Single-ended Loudness estimator in [3] outperformed current machine learning model</li>
+            <li>Mixed approach considered: handcrafted features and deep learning prediction, if training 
+                data increase doesn't improve results</li>
+        </ul>
+
+        <p><strong>Proposal for the Requirement Specification of P.SAMD</strong> 
+            [SG12-C384 by Mittag & Möller]</p>
+        <ul>
+            <li>Proposal for requirement specification of single-ended and diagnostic speech quality 
+                prediction model P.SAMD</li>
+            <li>Includes prediction of four perceptual dimensions of P.AMD set A and overall speech quality 
+                (P.800 absolute category rating)</li>
+            <li>Proposed change: model bandwidth mode from super-wideband to fullband</li>
+            <li>Training and testing databases based on conversational speech samples due to single-ended 
+                nature of P.SAMD</li>
+            <li>Planning experiments with conversational reference speech files</li>
+            <li>Model architecture not final, subject to change with more training data</li>
+            <li>End-to-end approach may be feasible, making CNN network and P.OLQA per-frame-similarity 
+                training unnecessary</li>
+            <li>Single-ended Loudness estimator in [3] outperformed current machine learning model</li>
+            <li>Mixed approach considered: handcrafted features and deep learning prediction, if training 
+                data increase doesn't improve results</li>
+        </ul>
+
+        <h3><u>Dec 2019</u></h3>
+        <p><strong>P.SAMD updated results and validation plan</strong> 
+        [SG12-C440 by Mittag, Naderi & Möller]</p>
+        <ul>
+            <li>New database with conversational speech reference files and annotated P.SAMD quality 
+                dimensions presented</li>
+            <li>Proposed model achieves good results for all four dimensions and overall speech quality</li>
+            <li>Main focus: model validation, meets predetermined requirement specifications on training 
+                data set</li>
+            <li>Results on validation data set:</li>
+            <ul>
+              <li>Overall speech quality: RMSE* 0.34 (worst-case), average 0.22</li>
+              <li>Individual dimensions: RMSE* 0.24 (worst-case), average 0.15</li>
+            </ul>
+        </ul>
+
+        <h3><u>April 2020</u></h3>
+        <p><strong>P.SAMD updated results on a live talking database</strong> 
+        [SG12-C471 by Mittag, Chehadi & Möller]</p>
+        <ul>
+            <li>Results of current candidate P.SAMD model on new live talking database presented</li>
+            <li>Overall speech quality results promising, but need more training data for reliable 
+                prediction in realistic phone call scenarios</li>
+            <li>Overall MOS and quality dimensions results meet P.SAMD requirements [2] for speech 
+                quality</li>
+            <li>Results on quality dimensions not satisfying yet, e.g., RMSE* 0.45 for Discontinuity</li>
+            <li>Model not trained on conversational speech or live talking for dimensions due to limited 
+                subjective training databases</li>
+            <li>Plan to create and annotate more conversational and live talking databases, retrain model 
+                before validation phase</li>
+        </ul>
+          
+        <h3><u>May 2021</u></h3>
+        <p><strong>P.SAMD final model and results on new test datasets</strong> 
+        [SG12-C555 by Mittag, Naderi & Möller]</p>
+        <ul>
+            <li>Presented training and test set results of P.SAMD candidate model</li>
+            <li>Introduced three new test datasets with condition tables</li>
+            <li>Frozen P.SAMD candidate model meets requirements on new test datasets for all dimensions 
+                and overall quality</li>
+            <li>Average RMSE* on new datasets: overall quality 0.18, Noisiness 0.14, Coloration 0.15, 
+                Discontinuity 0.19, Loudness 0.13</li>
+            <li>Reliable results on new speech samples with unknown references and various conditions 
+                (Zoom live calls, background noises)</li>
+            <li>Model predicts speech quality independently of speaker; reliable for German, English, 
+                Japanese, Swedish, French, and Chinese speech samples</li>
+            <li>Can predict spontaneous, conversational speech as well as typical P.800 double sentences</li>
+            <li>Analysis shows consistent prediction behavior with technical distortion parameters 
+                (background noise SNR, speech level, filters, packet-loss rate)</li>
+        </ul>
+          
+        
+    </div>
 
 </body>
 </html>
