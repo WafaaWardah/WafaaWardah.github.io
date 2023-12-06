@@ -24,6 +24,18 @@
 
 <h2><u>Upstream model</u></h2>
 
+<div>
+    <p><strong>Pipeline for XLS-R53 feature extraction</strong></p>
+        <p>First, a pretrained model of the Wav2Vec2 model from the Facebook AI repository is initialized 
+            using the Hugging Face Transformers library. There are three modules in the Wav2Vec2Model: 
+            feature_extractor, feature_projector, and encoder. The speech/audio features can be extracted at 
+            any of those modules in the architecture sequence. This is something that can be explored 
+            in the overall model. First, only the feature_extractor module output is used in the P.SAMD 
+            upstream model. Later, the other two modules can be experimented with to see if performance improves.
+            the Wav2Vec2FeatureExtractor to preprocess the audio and then passes it through the Wav2Vec2Model to extract 
+            feature vectors directly from the audio</p>
+</div>
+
 <h3>XLS-R Feature Extractor</h3>
 <p>The paper <a href="https://arxiv.org/abs/2006.13979">Unsupervised Cross-lingual Representation Learning for Speech Recognition</a> describes 
     the XLS-R model and its feauture extractor.</p>
@@ -72,9 +84,15 @@
 <ol>
     <li>
         <strong>V1:</strong> <br>
-        <u>Upstream:</u> XLS-R feature extractor (all 7 CNN layer feature vectors) <br>
+        <u>Upstream:</u> XLS-R feature extractor (all 7 CNN layer feature vectors) This is from the PyTorch pipeline.<br>
         Input shape: waveform -> Feature extraction -> torch.Size([7, 449, 1024]) -> slicing -> torch.Size([7, 200, 1024]) -> flattening -> torch.Size([1433600]). <br>
-        <u>Downstream:</u> Linear regressor with simple topology: Linear(1433600, 512) -> ReLU() -> Linear(512, 256) -> ReLU() -> Linear(256, 5)
+        <u>Downstream:</u> Linear regressor with simple topology: Linear(1433600, 512) -> ReLU() -> Linear(512, 256) -> ReLU() -> Linear(256, 5) <br>
+    </li> <br>
+    <li>
+        <strong>V2:</strong> <br>
+        <u>Upstream:</u> XLS-R feature extractor (all 7 CNN layer feature vectors) This is from the Hugging Face Transformers library.<br>
+        Input shape: waveform -> Feature extraction ->  <br>
+        <u>Downstream:</u> Linear regressor with simple topology: Linear(1433600, 512) -> ReLU() -> Linear(512, 256) -> ReLU() -> Linear(256, 5) <br>
     </li>
 </ol>
 

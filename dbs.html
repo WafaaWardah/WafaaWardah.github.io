@@ -22,118 +22,180 @@
 
 <h1 style="text-align:center">Databases</h1>
 
-<!-- Table od databases -->
-<table border="1" style="border-collapse: collapse; margin: 0 auto">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Count</th>
-            <th>Dimensions</th>
-            <th>Usage</th>
-            <th>Description</th>
-            <th>Reference</th>
-            <th>Source Audio</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>NISQA_TRAIN_SIM</td>
-            <td>10,000</td>
-            <td>overall, noi, dis, col, loud</td>
-            <td>Train</td>
-            <td>Contains simulated distortions with speech samples from four different datasets. Divided into a training and a validation set.</td>
-            <td>Where were the ratings from? P.808? P.800? POLQA?</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>NISQA_TRAIN_LIVE</td>
-            <td>1,020</td>
-            <td>overall, noi, dis, col, loud</td>
-            <td>Train</td>
-            <td>Contains live phone and Skype recordings with Librivox audiobook samples. Divided into training and validation set.</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>NISQA_VAL_SIM</td>
-            <td>2,500</td>
-            <td>overall, noi, dis, col, loud</td>
-            <td>Validation</td>
-            <td>contains simulated distortions with speech samples from four different datasets. Divided into a training and a validation set.</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>NISQA_VAL_LIVE</td>
-            <td>200</td>
-            <td>overall, noi, dis, col, loud</td>
-            <td>Validation</td>
-            <td>Contains live phone and Skype recordings with Librivox audiobook samples. Divided into training and validation set.</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>NISQA_TEST_LIVETALK</td>
-            <td>232</td>
-            <td>overall, noi, dis, col, loud</td>
-            <td>Test</td>
-            <td>Contains simulated distortions with different codecs, background noises, packet-loss, clipping. It also contains live conditions with WhatsApp, Zoom, and Discord.</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>NISQA_TEST_FOR</td>
-            <td>240</td>
-            <td>overall, noi, dis, col, loud</td>
-            <td>Test</td>
-            <td>Contains live and simulated conditions with speech samples from the forensic speech dataset.</td>
-            <td>Crowdsourced according to ITU-T P.808</td>
-            <td>Source speech samples are taken from the "Forensic Voice Comparison Databases - Australian English: 500+ speakers" dataset.</td>
-        </tr>
-        <tr>
-            <td>NISQA_TEST_NSC</td>
-            <td>240</td>
-            <td>overall, noi, dis, col, loud</td>
-            <td>Test</td>
-            <td>Contains simulated distortions with different codecs, background noises, packet-loss, clipping. It also contains live conditions with Skype, Zoom, and Google Meet, and mobile-to-landline.</td>
-            <td>Crowdsourced according to ITU-T P.808</td>
-            <td>Source speech samples are taken from the "Nautilus Speaker Characterization (NSC) Corpus" database.</td>
-        </tr>
-        <tr>
-            <td>NISQA_TEST_P501</td>
-            <td>240</td>
-            <td>overall, noi, dis, col, loud</td>
-            <td>Test</td>
-            <td>Contains simulated distortions with different codecs, background noises, packet-loss, clipping. It also contains live conditions with Skype, Zoom, WhatsApp, and mobile network recordings.</td>
-            <td>Crowdsourced according to ITU-T P.808</td>
-            <td>Source speech samples are taken from Annex C of the "ITU-T P.501" dataset</td>
-        </tr>
-    </tbody>
-</table>
+<div>
+    <h3><u>Steps</u></h3>
+
+    <h4>1. Source files</h4>
+    <p>Reference audio can be sourced from anywhere. Speech audio should be 6-12 seconds in length.</p>
+
+    <h4>2. Ratings</h4>
+    
+    <p>Listening tests are conducted to collect the following ratings:</p>
+    <ul>
+        <li><em>Overall quality</em> MOS</li>
+        <li><em>Coloration</em> COL (i.e. resulting from frequency response distortions, e.g. bandwidth restrictions and
+            coloration introduced by transducers)</li>
+        <li><em>Noisiness</em> NOI (e.g. resulting from additive and multiplicative noise)</li>
+        <li><em>Discontinuity</em> DIS (e.g. resulting from time localized and time-varying degradations)</li>
+        <li><em>Loudness</em> LOUD (e.g. impact of overall play back level)</li>
+    </ul>
+    
+</div>
+
+<div>
+    <h2><u>New Databases</u></h2> <!-- Table of new databases -->
+
+    <table border="1" style="border-collapse: collapse; margin: 0 auto">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>From</th>
+                <th>Dimensions</th>
+                <th>Usage</th>
+                <th>Count</th>
+                <th>Description</th>
+                <th>Source</th>
+                <th>Reference</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>TUB_CS</td>
+                <td>TUB (& Orange)</td>
+                <td>MOS, NOI, DIS, COL, LOUD</td>
+                <td>Training, Validation, Test</td>
+                <td>tbd</td>
+                <td>The source files are provided by TUB, and will be degraded by Vincent at Orange. The degraded files will be 
+                    rated using P.800. The db is expected to be completed by mid February 2024.</td>
+                <td>Crowdsourced speech recordings in German. There are 5 sentences spoken on 4 types of devices, in 11 different 
+                    conditions. Collected by TUB.</td>
+                <td>Subjective listening test will be conducted by Wafaa's advanced projects student group at TUB following P.800.</td>
+            </tr>
+            <tr>
+                <td>ETSI_DB</td>
+                <td>ETSI/Jan Reimes</td>
+                <td>MOS</td>
+                <td>Training <br>(& partial held by Jan Reimes for blind testing the frozen models)</td>
+                <td>tbc</td>
+                <td>DB already created by Jan. NDA being prepared by Prof. Möller and Jan. 
+                    <a href="https://docbox.etsi.org/STQ/Open/TS%20103%20558/">ETSI TS 103 558 Annex D & E</a>
+                </td>
+                <td>tbc</td>
+                <td>tbc</td>
+            </tr>
+            <tr>
+                <td>ETSI_TUB_DB</td>
+                <td>ETSI/Jan and TUB</td>
+                <td>MOS, NOI, DIS, COL, LOUD</td>
+                <td>tbc</td>
+                <td>tbc</td>
+                <td>Jan will degrade the source files from TUB using his pipeplin and conditions curated by Vincent.</td>
+                <td>Crowdsourced speech recordings in German. There are 5 sentences spoken on 4 types of devices, in 11 different 
+                    conditions. Collected by TUB.</td>
+                <td>Crowdsourced by TUB (Crowdee).</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <h2><u>Old Databases</u></h2> <!-- Table of old databases -->
+    <table border="1" style="border-collapse: collapse; margin: 0 auto">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Count</th>
+                <th>Dimensions</th>
+                <th>Usage</th>
+                <th>Description</th>
+                <th>Reference</th>
+                <th>Source Audio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>NISQA_TRAIN_SIM</td>
+                <td>10,000</td>
+                <td>overall, noi, dis, col, loud</td>
+                <td>Train</td>
+                <td>Contains simulated distortions with speech samples from four different datasets. Divided into a training and a validation set.</td>
+                <td>Where were the ratings from? P.808? P.800? POLQA?</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>NISQA_TRAIN_LIVE</td>
+                <td>1,020</td>
+                <td>overall, noi, dis, col, loud</td>
+                <td>Train</td>
+                <td>Contains live phone and Skype recordings with Librivox audiobook samples. Divided into training and validation set.</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>NISQA_VAL_SIM</td>
+                <td>2,500</td>
+                <td>overall, noi, dis, col, loud</td>
+                <td>Validation</td>
+                <td>contains simulated distortions with speech samples from four different datasets. Divided into a training and a validation set.</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>NISQA_VAL_LIVE</td>
+                <td>200</td>
+                <td>overall, noi, dis, col, loud</td>
+                <td>Validation</td>
+                <td>Contains live phone and Skype recordings with Librivox audiobook samples. Divided into training and validation set.</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>NISQA_TEST_LIVETALK</td>
+                <td>232</td>
+                <td>overall, noi, dis, col, loud</td>
+                <td>Test</td>
+                <td>Contains simulated distortions with different codecs, background noises, packet-loss, clipping. It also contains live conditions with WhatsApp, Zoom, and Discord.</td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>NISQA_TEST_FOR</td>
+                <td>240</td>
+                <td>overall, noi, dis, col, loud</td>
+                <td>Test</td>
+                <td>Contains live and simulated conditions with speech samples from the forensic speech dataset.</td>
+                <td>Crowdsourced according to ITU-T P.808</td>
+                <td>Source speech samples are taken from the "Forensic Voice Comparison Databases - Australian English: 500+ speakers" dataset.</td>
+            </tr>
+            <tr>
+                <td>NISQA_TEST_NSC</td>
+                <td>240</td>
+                <td>overall, noi, dis, col, loud</td>
+                <td>Test</td>
+                <td>Contains simulated distortions with different codecs, background noises, packet-loss, clipping. It also contains live conditions with Skype, Zoom, and Google Meet, and mobile-to-landline.</td>
+                <td>Crowdsourced according to ITU-T P.808</td>
+                <td>Source speech samples are taken from the "Nautilus Speaker Characterization (NSC) Corpus" database.</td>
+            </tr>
+            <tr>
+                <td>NISQA_TEST_P501</td>
+                <td>240</td>
+                <td>overall, noi, dis, col, loud</td>
+                <td>Test</td>
+                <td>Contains simulated distortions with different codecs, background noises, packet-loss, clipping. It also contains live conditions with Skype, Zoom, WhatsApp, and mobile network recordings.</td>
+                <td>Crowdsourced according to ITU-T P.808</td>
+                <td>Source speech samples are taken from Annex C of the "ITU-T P.501" dataset</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 
 <div>
     <br> 
     <strong>Notes on Gabriel's DBs</strong>
     <p>Of all the databases Gabriel used to train NISQA2.0: 16,241 samples contain all 5 scores (overall quality plus
          all 4 quality dimension scores).</p>
-</div>
-
-<div>
-    <h2>New Databases</h2>
-
-    <p><strong>TUB-PSAMD-current</strong><br> 
-        This is a new database being created via Advanced Projects at the QU Lab Winter semsester 2023. Source speech files are yet 
-        to be selected. Annotation will be carried out in the lab following P.800 (Wafaa W.). Conditions are to be 
-        defined. Expected date to completion is end of January 2024.</p>
-
-    <p><strong>TUB-WP7-current</strong><br>
-        This is part of another project at the QU Lab (Kirill S. & Wafaa W.) where source files are crowdsourced in various live 
-        conditions. The Crowdee platform is used for collecting the source audio. About 2000 samples are expected. These will undergo 
-        screening, then simulated degradations wiöll be applied to selected samples. The speech files will ttthen be annotated 
-        via the same crowdsourcing platform. The database will then be used to train/finetune NISQA (and/or newer models) to check the 
-        suitability of crowdsourced source files in Speech Quality Assessment. Expected date to completion is end of January 2024. 
-    </p>
-
 </div>
 
 <div>
