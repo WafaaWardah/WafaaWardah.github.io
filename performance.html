@@ -16,7 +16,6 @@
     <a href="reqspecs.html">Requirements Specifications</a>
     <a href="dbs.html">Databases</a>
     <a href="model.html">Model</a>
-    <a href="training.html">Training</a>
     <a href="performance.html" class="active">Performance</a>
 </div>
 
@@ -35,6 +34,7 @@
             <th>Validation DB</th>
             <th>Validation r</th>
             <th>Validation rmse</th>
+            <th>Validation rmse*</th>
             <th>Test DB 1 r</th>
             <th>Test DB 1 rmse</th>
             <th>Test DB 1 rmse*</th>
@@ -46,7 +46,7 @@
     <tbody>
         <tr>
             <td>29.10.2023</td>
-            <td>V1.1 <br>dev-psamd-2_20231028_025001 (_2.pt)</td>
+            <td>V1</td>
             <td><strong>Device:</strong> MacBook Pro (Wafaa's old) CPU only<br>
                 <strong>Batch size:</strong> 64 <strong>Num_workers:</strong> 4 <br>
                 <strong>Epochs:</strong>Total run of 3 epochs, best was the 2nd epoch <br>
@@ -54,8 +54,9 @@
                 approx. 13.5 hours</td>
             <td>NISQA_TRAIN_SIM, NISQA_TRAIN_LIVE <br>(10,020)</td>
             <td>NISQA_VAL_SIM, NISQA_VAL_LIVE <br>(2,700)</td>
-            <td>overall: 0.867</td>
-            <td>overall: 0.573</td>
+            <td>overall: 0.867 <br>(per file)</td>
+            <td></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -64,17 +65,83 @@
             <td></td>
         </tr>
         <tr>
-            <td>30.10.2023</td>
-            <td>V1.2 <br></td>
+            <td>18.12.2023</td>
+            <td>V2 <br></td>
+            <td><strong>Device:</strong> Wafaa's new MacBook Pro (CPU M3)<br>
+                <strong>Batch size:</strong> 128 <strong>Num_workers:</strong> 8 <br>
+                <strong>Epochs:</strong>Total run of 45 epochs, best was the 30th epoch <br>
+                <strong>Duration:</strong>All epochs took approx. 8 hours, best epoch took 
+                approx. 6 minutes
+                <img src="resources/train_20231218083524_loss_plot.png" alt="" style="max-width: 50%;">
+            </td>
+            <td>NISQA_TRAIN_LIVE <br>(1,020)</td>
+            <td>NISQA_VAL_LIVE <br>(200)</td>
+            <td>
+                (per condn) <br><br>
+                mos:<br> 0.653 (0.9) <br><br>
+                noi:<br> 0.240 (0.9) <br><br>
+                col:<br> 0.506 (0.9) <br><br>
+                dis:<br> 0.363 (0.9) <br><br>
+                loud:<br> 0.641 (0.9)
+            </td>
+            <td>
+                (per condn) <br><br>
+                mos:<br> 0.544 (0.3) <br><br>
+                noi:<br> 0.735 (0.3) <br><br>
+                col:<br> 0.456 (0.2) <br><br>
+                dis:<br> 0.679 (0.3) <br><br>
+                loud:<br> 0.555 (0.3)
+            </td>
+            <td>
+                (per condn) <br><br>
+                mos:<br> 0.337 (0.1) <br><br>
+                noi:<br> 0.64 (0.2) <br><br>
+                col:<br> 0.338 (0.1) <br><br>
+                dis:<br> 0.491 (0.1) <br><br>
+                loud:<br> 0.3 (0.1)
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>20.12.2023</td>
+            <td>V2.1 <br></td>
             <td><strong>Device:</strong> Gunther GPU<br>
-                <strong>Batch size:</strong> - <strong>Num_workers:</strong> 12 <br>
+                <strong>Batch size:</strong> 512 <strong>Num_workers:</strong> 12 <br>
                 <strong>Epochs:</strong>Total run of - epochs, best was the - epoch <br>
                 <strong>Duration:</strong>All epochs took approx. - hours, best epoch took 
-                approx. - hours</td>
-            <td>NISQA_TRAIN_SIM, NISQA_TRAIN_LIVE <br>(10,020)</td>
-            <td>NISQA_VAL_SIM, NISQA_VAL_LIVE <br>(2,700)</td>
-            <td></td>
-            <td></td>
+                approx. - minutes
+            </td>
+            <td>Other + TUB train set<br></td>
+            <td>Other + TUB validation set<br></td>
+            <td>
+                (per condn) <br><br>
+                mos:<br>
+                noi:<br>
+                col:<br>
+                dis:<br> 
+                loud:<br>
+            </td>
+            <td>
+                (per condn) <br><br>
+                mos:<br>
+                noi:<br>
+                col:<br>
+                dis:<br>
+                loud:<br>
+            </td>
+            <td>
+                (per condn) <br><br>
+                mos:<br>
+                noi:<br>
+                col:<br>
+                dis:<br> 
+                loud:<br>
+            </td>
             <td></td>
             <td></td>
             <td></td>
@@ -84,30 +151,14 @@
         </tr>
     </tbody>
 </table>
+<p>Note: rmse* is rmse with third order mapping.</p>
 
 <div>
 
-    <h2>P-1401</h2>
-    <a href="https://www.itu.int/rec/T-REC-P.1401/en">Methods, metrics and procedures for statistical evaluation, qualification and comparison of objective quality prediction models</a>
-
-    <ul>
-        <li>It is recommended that the development (training, testing), validation and evaluation of the objective
-            algorithms' databases evenly and equally cover both simulated and live network conditions</li>
-        <li>It is strongly recommended to select databases for evaluation that reflect the use cases of the objective
-            prediction method.</li>
-        <li>For avoiding biases between simulations and real field data, the evaluation set should
-            contain databases where simulated and real field data are mixed in the same experiment.</li>
-        <li>The quality of the test samples used in each subjective experiment should allow the voters to use the
-            entire MOS scale.</li>
-        <li>It is recommended that prior to analysis, an inspection of the subjective and objective test data be
-            performed to uncover any types of outliers. Example: time clipping effect.</li>
-        <li>The group of people remains the same during the experiment, and the stimuli, that is, the 'context',
-            covers the same range of test conditions for everyone in the group. The average of the individual
-            scores per-sample or per-test condition forms the MOS. The MOS is an average with a certain
-            statistical uncertainty, since not all people will mark the sample with exactly the same score.</li>
-        <li>Scaling</li>
-        
-    </ul>
+    <h2>References</h2>
+    <a href="https://www.itu.int/rec/T-REC-P.1401/en"><strong>P-1401</strong> Methods, metrics and procedures for statistical evaluation, 
+        qualification and comparison of objective quality prediction models</a> <br>
+    <a href="resources/nisqa_paper.pdf"><strong>NISQA</strong>: A Deep CNN-Self-Attention Model for Multidimensional Speech Quality Prediction with Crowdsourced Datasets</a>
 </div>
 
 </body>

@@ -6,100 +6,113 @@
     <title>Model</title>
 </head>
 <body>
-</style><link rel="stylesheet" href="style.css">
+    </style><link rel="stylesheet" href="style.css">
 
-<h1 style="text-align:center">P.SAMD</h1>
+    <h1 style="text-align:center">P.SAMD</h1>
 
-<!-- Horizontal menu -->
-<div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="reqspecs.html">Requirements Specifications</a>
-    <a href="dbs.html">Databases</a>
-    <a href="model.html" class="active">Model</a>
-    <a href="training.html">Training</a>
-    <a href="performance.html">Performance</a>
-</div>
+    <!-- Horizontal menu -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="reqspecs.html">Requirements Specifications</a>
+        <a href="dbs.html">Databases</a>
+        <a href="model.html" class="active">Model</a>
+        <a href="performance.html">Performance</a>
+    </div>
 
-<h1 style="text-align:center">Model</h1>
+    <h1 style="text-align:center">Model</h1>
 
-<div style="text-align:center">
-    <img src="resources/overview_diagram.png" alt="Overview of the model design.">
-</div>
+    <div style="display: flex; align-items: center; justify-content: center; margin: 15px;">
+        
+        <div style="flex: 1; margin: 10px;">
+            <img src="resources/overview_diagram.png" alt="Overview of the model design." style="max-width: 100%;">
+        </div>
+        
+        <div style="flex: 1; margin: 10px;">
 
-<h2><u>Upstream model</u></h2>
+            <h2>Data Loading</h2> 
+            <p>The input to the model is a wav file, ideally sampled at 48kHz and 6-12 seconds in duration. </p>
+        
+            <h2>Upstream Task</h2>
+            <p><u>XLS-R53 feature extraction</u></p>
+            <p>The paper <a href="https://arxiv.org/abs/2006.13979">Unsupervised Cross-lingual Representation Learning for Speech Recognition</a> describes 
+                the XLS-R model and its feauture extractor.</p>
 
-<div>
-    <p><strong>Pipeline for XLS-R53 feature extraction</strong></p>
-        <p>First, a pretrained model of the Wav2Vec2 model from the Facebook AI repository is initialized 
-            using the Hugging Face Transformers library. There are three modules in the Wav2Vec2Model: 
-            feature_extractor, feature_projector, and encoder. The speech/audio features can be extracted at 
-            any of those modules in the architecture sequence. This is something that can be explored 
-            in the overall model. First, only the feature_extractor module output is used in the P.SAMD 
-            upstream model. Later, the other two modules can be experimented with to see if performance improves.
-            the Wav2Vec2FeatureExtractor to preprocess the audio and then passes it through the Wav2Vec2Model to extract 
-            feature vectors directly from the audio</p>
-</div>
+            <p>The pretrained feature extractor of Wave2Vec 2.0 can handle audio of varying duration during inference. While the model was trained on fixed-length 
+                segments of 800 milliseconds with a 400 ms overlap, this does not restrict the model's ability to process audio signals of different durations 
+                during the inference phase.
+            </p>
 
-<h3>XLS-R Feature Extractor</h3>
-<p>The paper <a href="https://arxiv.org/abs/2006.13979">Unsupervised Cross-lingual Representation Learning for Speech Recognition</a> describes 
-    the XLS-R model and its feauture extractor.</p>
+            <p>Layer output processing: whether to pool and reduce the final tensor size or keep all the layer vectors stacked without losing any layer information.
+                3 verrsions of the feature extractor can be explored: No layer aggregation, Average-pooling the layers, or Max-pooling the layers</p>
 
-<p>Wave2Vec 2.0, including the XLS-R variant, extracts features from raw audio waveforms using a deep neural network architecture based on a 
-    self-supervised learning approach. The model processes the raw audio waveforms to learn meaningful representations directly from the audio signal. 
-    Here's how Wave2Vec 2.0 typically extracts features from WAV files:</p>
+            <p>The XLSR feature extractor will not be trained (finetuned) during the traing phase of this model. The frozen pre-trained weights are.</p>
 
-<ol>
-    <li>Feature Extraction with Convolutional Neural Networks (CNNs): <br>
-        Wave2Vec 2.0 employs a series of convolutional layers to process the raw audio waveforms. The convolutional neural network operates on small 
-        chunks of the waveform, capturing local patterns in the audio signal.
-    </li>
-    <li>Contrastive Learning (Self-Supervised Learning)</li>
-    <li>Strided Convolutional Layers, with Pooling and Aggregation</li>
-    <li>Hierarchical and Final Feature Representations</li>
-</ol>
+            <p>Disadvantage: downsampling audio from 48kHz to 16kHz can alter the high-frequency content, spectral balance, introduce artifacts, and 
+                impact psychoacoustic cues, all of which can lead to changes in the perceived coloration of the audio. </p>
+            
+        </div>
 
-<p>The pretrained feature extractor of Wave2Vec 2.0 can handle audio of varying duration during inference. While the model was trained on fixed-length 
-    segments of 800 milliseconds with a 400 ms overlap, this does not restrict the model's ability to process audio signals of different durations 
-    during the inference phase.
-</p>
+        <div style="flex: 1; margin: 10px;">
+            <p><u>Mel-Spectrogram</u></p>
+            <p>Mel-spectrogram is created with the folllowing configuration:</p>
+            <ul>
+                <li>Sample rate is 48000</li>
+                <li>Window size for spectrogram analysis is 2048</li>
+                <li>Hop length (stride) for the window is 400</li>
+                <li>Number of Mel frequency bins is 160</li>
+                <li>Minimum frequency in Mel filterbank is 0</li>
+                <li>Maximum frequency in Mel filterbank (approximate Nyquist frequency for speech) is 8000</li>
+            </ul>
 
-<p>Layer output processing: whether to pool and reduce the final tensor size or keep all the layer vectors stacked without losing any layer information.
-    3 verrsions of the feature extractor can be explored:</p>
+            <img src="resources/sample_mel_spec.png" alt="Sample Mel-Spectrogram" style="max-width: 100%;">
+            <p>A <strong>Convolutional Neural Network</strong> (CNN) is used to extract features from the Mel-spectrogram.
+             This CNN will be trained during the training phase of the model.</p>
+            <p>Features from the XLSR feature extractor and from the mel-spec-CNN feature extractor are concatenated into one feature vector.</p>
+        </div>
+    </div>
 
-<ul>
-    <li>No layer aggregation</li>
-    <li>Average-pooling the layers</li>
-    <li>Max-pooling the layers</li>
-</ul>
+    <div style="display: flex; align-items: center; justify-content: center; margin: 15px;">
+        
+        <div style="flex: 1; margin: 10px;">
+            <h2>Downstream Task</h2>
+            <p>This will have a self-attention mechanism. The first versions use a simple fully connected (FC) linear layer with Sigmoid activation function, 
+                followed by scaling to constrain outputs within the 1 - 4.8 range.</p>
+        </div>
+        
+        <div style="flex: 1; margin: 10px;">
+            <h2>Prediction</h2>
+            <p>The model outputs 5 scores:</p>
+            <ul>
+                <li><em>Overall quality</em> MOS</li>
+                <li><em>Coloration</em> COL (i.e. resulting from frequency response distortions, e.g. bandwidth restrictions and
+                    coloration introduced by transducers)</li>
+                <li><em>Noisiness</em> NOI (e.g. resulting from additive and multiplicative noise)</li>
+                <li><em>Discontinuity</em> DIS (e.g. resulting from time localized and time-varying degradations)</li>
+                <li><em>Loudness</em> LOUD (e.g. impact of overall play back level)</li>
+            </ul>
+        </div>
 
-<p>Disadvantage: downsampling audio from 48kbps to 16kbps can alter the high-frequency content, spectral balance, introduce artifacts, and 
-    impact psychoacoustic cues, all of which can lead to changes in the perceived coloration of the audio. </p>
+    </div>
 
-<h3>Mel-Spectrogram</h3>
-<p>TBD</p>
+    <div style="margin: 25px;">
+        <h3>Development versions over time</h3>
 
-<h3>MFCC</h3>
-<p>TBD</p>
+            <ol>
+                <li>
+                    <strong>V1:</strong> <br>
+                    <u>Upstream:</u> XLS-R feature extractor (all 7 CNN layer feature vectors) This is from the PyTorch pipeline.<br>
+                    Input shape: waveform -> Feature extraction -> torch.Size([7, 449, 1024]) -> slicing -> torch.Size([7, 200, 1024]) -> flattening -> torch.Size([1433600]). <br>
+                    <u>Downstream:</u> Linear regressor with simple topology: Linear(1433600, 512) -> ReLU() -> Linear(512, 256) -> ReLU() -> Linear(256, 5) <br>
+                </li> <br>
+                <li>
+                    <strong>V2:</strong> <br>
+                    <img src="resources/Screenshot 2023-12-19 at 08.03.53.png" alt="Overview of the model V2." style="max-width: 20%;">
+                </li>
+            </ol>
 
-<h2><u>Downstream model</u></h2>
-<p>TBD</p>
+    </div>
+    
 
-<h2><u>Development variants</u></h2>
-
-<ol>
-    <li>
-        <strong>V1:</strong> <br>
-        <u>Upstream:</u> XLS-R feature extractor (all 7 CNN layer feature vectors) This is from the PyTorch pipeline.<br>
-        Input shape: waveform -> Feature extraction -> torch.Size([7, 449, 1024]) -> slicing -> torch.Size([7, 200, 1024]) -> flattening -> torch.Size([1433600]). <br>
-        <u>Downstream:</u> Linear regressor with simple topology: Linear(1433600, 512) -> ReLU() -> Linear(512, 256) -> ReLU() -> Linear(256, 5) <br>
-    </li> <br>
-    <li>
-        <strong>V2:</strong> <br>
-        <u>Upstream:</u> XLS-R feature extractor (all 7 CNN layer feature vectors) This is from the Hugging Face Transformers library.<br>
-        Input shape: waveform -> Feature extraction ->  <br>
-        <u>Downstream:</u> Linear regressor with simple topology: Linear(1433600, 512) -> ReLU() -> Linear(512, 256) -> ReLU() -> Linear(256, 5) <br>
-    </li>
-</ol>
 
 </body>
 </html>
