@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WafaaWardah</title>
+    <title>Wafaa Wardah</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="header-placeholder"></div>
+    <h1 style="text-align:center">Wafaa Wardah</h1>
+
+    <div class="navbar">
+        <a href="index.html" class="active">Home</a>
+        <a href="books.html">Books</a>
+        <a href="gift-wishlist.html">Gift-wishlist</a>
+    </div>
 
     <div class="container">
         <h2>Welcome to my Personal Page</h2>
         <p>Feel free to explore the links. This is a work in progress.</p>
     </div>
-
-    <script>
-        // Load header.html into the placeholder div
-        fetch('header.html')
-          .then(response => response.text())
-          .then(data => {
-              document.getElementById('header-placeholder').innerHTML = data;
-          });
-    </script>
+    
 </body>
 </html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wafaa's Gift Wishlist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Reusable header include -->
+    <div id="header-placeholder"></div>
+
+    <div class="container">
+        <h2>🎁 Wafaa’s Gift Wishlist</h2>
+        <p>Thank you for your kindness and love! Here are some ideas for gifts that would make me smile 🥰:</p>
+
+        <h3>📚 Books I'd Love to Read</h3>
+        <ul>
+            <li>"The Evolution of the Human Head" by Daniel E. Lieberman (Illustrated Edition)</li>
+        </ul>
+
+        <h3>☕ Experiences I'd Enjoy</h3>
+        <ul>
+            <li>A voucher for a coffee roastery visit</li>
+            <li>A gift card for a local bookstore</li>
+            <li>A spa day or relaxing massage session</li>
+        </ul>
+
+        <h3>✨ Little Joys and Thoughtful Things</h3>
+        <ul>
+            <li>Handmade or artisanal soaps</li>
+            <li>Beautiful notebooks or journals 📓</li>
+            <li>Candles with soft natural scents 🕯️</li>
+            <li>Bath products</li>
+            <li>A handwritten letter or handmade card</li>
+        </ul>
+
+        <h3>🌿 Things for My Home</h3>
+        <ul>
+            <li>Indoor plants (easy-care ones like cactus, pothos or peace lily 🌱)</li>
+            <li>Pretty coffee mugs or tea cups</li>
+            <li>Soft throws or blankets in mustard or earthy tones</li>
+        </ul>
+    </div>
+
+    <!-- Include the header via JavaScript -->
+    <script>
+        fetch('header.html')
+          .then(response => response.text())
+          .then(data => {
+              document.getElementById('header-placeholder').innerHTML = data;
+          });
+    </script>
+</body>
+</html>
