@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wafaa's Book List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Reusable header include -->
+    <div id="header-placeholder"></div>
+
+    <div class="container">
+        <h2>📖 Books on Wafaa's Mind</h2>
+
+        <h3>📚 Books I'd Love to Read</h3>
+        <ul>
+            <li>The Evolution of the Human Head, by Daniel E. Lieberman (Illustrated Edition)</li>
+        </ul>
+
+        <h3>📚 Books I have Already Read</h3>
+        <ul>
+            <li style="list-style-type: none;"></li>
+                <details>
+                    <summary>The Selfish Gene, by Richard Dawkins</summary>
+                    <p><em>The best book on Earth 😊🤯🫣♥️</em></p>
+                </details>
+            </li>
+            <li style="list-style-type: none;"></li>
+                <details>
+                    <summary>Climbing Mount Improbable, by Richard Dawkins</summary>
+                    <p><em>The next best book on Earth 😊🫣</em></p>
+                </details>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Include the header via JavaScript -->
+    <script>
+        fetch('header.html')
+          .then(response => response.text())
+          .then(data => {
+              document.getElementById('header-placeholder').innerHTML = data;
+          });
+    </script>
+</body>
+</html>
