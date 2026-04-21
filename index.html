@@ -3,26 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wafaa Wardah</title>
+    <title>Wafaa Wardah | Ethical Living</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Reusable header include -->
     <div id="header-placeholder"></div>
 
-    <div class="container">
-        <h2>Welcome to my Personal Page</h2>
-        <p>Feel free to explore the links. This is a work in progress.</p>
-    </div>
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <p class="eyebrow">Wafaa Wardah</p>
+                <h1>Ethical living, beautifully done.</h1>
+                <p class="intro">
+                    A refined space for vegan living, feminism, conscious choices,
+                    and elegant everyday ethics.
+                </p>
+                <a href="veg.html" class="button">Explore</a>
+            </div>
+        </section>
 
-    <!-- Include the header via JavaScript -->
+        <section class="about-preview container">
+            <h2>About</h2>
+            <p>
+                I care about living with intention: what we wear, what we support, 
+                how we move through the world, and how a beautiful life and a clear conscience belong together.
+            </p>
+        </section>
+
+        <section class="topics container">
+            <h2>Topics</h2>
+            <div class="cards">
+                <a class="card" href="veg.html">
+                    <h3>Vegan Living</h3>
+                    <p>Thoughtful choices, brands, materials, and daily practices.</p>
+                </a>
+
+                <a class="card" href="fem.html">
+                    <h3>Feminism</h3>
+                    <p>Reflections on women, dignity, freedom, and power.</p>
+                </a>
+
+                <a class="card" href="berlin.html">
+                    <h3>Berlin</h3>
+                    <p>From the Fiji Islands, living in Berlin, Germany.</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
     <script>
         fetch('header.html')
           .then(response => response.text())
           .then(data => {
               document.getElementById('header-placeholder').innerHTML = data;
           });
+        
+        fetch('footer.html')
+          .then(response => response.text())
+          .then(data => {
+              document.getElementById('footer-placeholder').innerHTML = data;
+          });
     </script>
-
 </body>
 </html>

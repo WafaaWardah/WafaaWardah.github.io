@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Wafaa Wardah</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+
+        <section>
+            <h1>About</h1>
+            <p class="intro">
+                I am interested in living thoughtfully: with beauty, conscience, intelligence, and care.
+            </p>
+        </section>
+
+        <section>
+            <h2>Hello, I’m Wafaa.</h2>
+            <p>
+                I am an AI researcher based in Berlin, with a background in speech, machine learning, and scientific work.
+                Alongside that, I care deeply about ethical living: veganism, feminism, conscious choices, and creating
+                a life that feels both beautiful and right.
+            </p>
+            <p>
+                This space brings those parts of me together. It is where I share reflections, recommendations, and curated
+                finds on ethical living, vegan alternatives, feminism, and the quieter art of building a thoughtful life.
+            </p>
+        </section>
+
+        <section>
+            <h2>This site is for</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Ethical Living</h3>
+                    <p>
+                        Thoughtful choices around consumption, beauty, and daily life.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Vegan Living</h3>
+                    <p>
+                        Food, fashion, materials, and alternatives that reduce harm without losing style.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Feminism</h3>
+                    <p>
+                        Reflections on women’s dignity, autonomy, safety, and full humanity.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Berlin</h3>
+                    <p>
+                        My edit of the city through the lens of ethics, beauty, and intelligent living.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Currently</h2>
+            <p>
+                Based in Berlin. Working in AI research. Building a life with more intention, more beauty, and more alignment
+                between values and everyday choices.
+            </p>
+        </section>
+
+        <section>
+            <h2>Links</h2>
+            <ul class="link-list">
+                <li><a href="https://instagram.com/wafaa_wardah" target="_blank">Instagram</a></li>
+                <li><a href="https://linkedin.com/in/wafaawardah" target="_blank">LinkedIn</a></li>
+                <li><a href="https://scholar.google.com/citations?user=8SR7n4oAAAAJ" target="_blank">Google Scholar</a></li>
+                <li><a href="https://orcid.org/0000-0001-6356-5314" target="_blank">ORCID</a></li>
+                <li><a href="resources/CV_WafaaWardah_2026.pdf" target="_blank">CV</a></li>
+                <li><a href="mailto:wafaa.wardah@tu-berlin.de">Email</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>A note</h2>
+            <p>
+                I do not see ethics and aesthetics as opposites. I think a good life can be thoughtful, attractive,
+                intelligent, and kind at the same time.
+            </p>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        fetch('header.html')
+          .then(response => response.text())
+          .then(data => {
+              document.getElementById('header-placeholder').innerHTML = data;
+          });
+
+        fetch('footer.html')
+          .then(response => response.text())
+          .then(data => {
+              document.getElementById('footer-placeholder').innerHTML = data;
+          });
+    </script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berlin | Wafaa Wardah</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+
+        <!-- Intro -->
+        <section>
+            <h1>Berlin</h1>
+            <p class="intro">
+                A city of contrasts: creative, imperfect, thoughtful, and full of spaces for ethical, independent, and beautiful living.
+            </p>
+        </section>
+
+        <!-- Berlin overview -->
+        <section>
+            <h2>Why Berlin</h2>
+            <p>
+                Berlin feels expansive in more than one way. It gives room for ideas, individuality, reinvention,
+                and quieter forms of freedom. What I like most is that it can be intellectually alive without
+                needing to feel polished in the obvious way. Beneath the roughness, there is an enormous amount
+                of care: vegan food, sustainable fashion, feminist culture, political memory, creative communities,
+                and people trying to live more consciously.
+            </p>
+        </section>
+
+        <!-- Sections -->
+        <section>
+            <h2>My Berlin edit</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>Restaurants & Cafés</h3>
+                    <p>
+                        Berlin is one of Europe’s strongest cities for vegan food. This is where I collect places
+                        that feel genuinely good rather than merely “vegan by label”: relaxed brunches, beautiful cafés,
+                        dinners worth dressing for, and everyday favourites.
+                    </p>
+                    <ul>
+                        <li>Brammibal’s Donuts</li>
+                        <li>Bodhicitta Vegan Bowl</li>
+                        <li>Vegano Mezo</li>
+                        <li>Zerö Kebab</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Sustainable Fashion</h3>
+                    <p>
+                        Berlin has some genuinely strong options for vegan and fair fashion. I am interested in pieces
+                        that feel elegant, wearable, and aligned with conscience rather than trend-chasing.
+                    </p>
+                    <ul>
+                        <li>LOVECO</li>
+                        <li>Wertvoll Berlin</li>
+                        <li>avesu</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Women & Feminist Spaces</h3>
+                    <p>
+                        Berlin also holds space for women-centred culture and feminist community. I want this section
+                        to grow into a thoughtful list of places, events, and organisations worth knowing.
+                    </p>
+                    <ul>
+                        <li>BEGiNE women’s cultural centre</li>
+                        <li>Women-focused talks, screenings, and community events</li>
+                        <li>Historical and political sites connected to women’s rights</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Clubs & Nightlife</h3>
+                    <p>
+                        Berlin nightlife can be many things. What interests me most are spaces that feel expressive,
+                        open-minded, creative, and socially aware rather than simply excessive.
+                    </p>
+                    <ul>
+                        <li>FLINTA* events and parties</li>
+                        <li>Art-led evenings and cultural programming</li>
+                        <li>Smaller spaces with a stronger sense of community</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Relevant People & Ideas</h3>
+                    <p>
+                        This city is shaped by artists, organisers, independent founders, researchers, and women who
+                        build culture rather than simply consume it. I want to use this space to highlight people,
+                        projects, and ideas that make Berlin feel alive in a more meaningful way.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Seasonal Events</h3>
+                    <p>
+                        Berlin is especially good when you know what is happening. Sustainable fairs, feminist events,
+                        ethical fashion moments, film festivals, and public conversations make the city feel richer
+                        than a static guide ever could.
+                    </p>
+                    <ul>
+                        <li>Veggienale</li>
+                        <li>FrauenWelten / women-focused film programming</li>
+                        <li>Sustainability and fair fashion events</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Featured recommendations -->
+        <section>
+            <h2>Places I would start with</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>LOVECO</h3>
+                    <p>
+                        A strong starting point for vegan and ethical fashion in Berlin. Good when you want a more
+                        curated, wearable, city-ready look rather than something overly earthy or vague.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Wertvoll Berlin</h3>
+                    <p>
+                        For sustainable fashion that feels more grown, selective, and quietly elegant. A good fit for
+                        people who want beauty and values to sit together naturally.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>avesu</h3>
+                    <p>
+                        Especially useful for vegan shoes, which are often the hardest category to find well. A practical
+                        and relevant Berlin stop if you care about materials as much as style.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>BEGiNE</h3>
+                    <p>
+                        A women’s cultural space with history and substance. The kind of place that reminds you Berlin
+                        is not only trendy, but also political, communal, and shaped by women who built things.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Personal note -->
+        <section>
+            <h2>A personal note</h2>
+            <p>
+                I do not love Berlin because it is perfect. I love it because it leaves room for becoming:
+                more honest, more independent, more expressive, more alive. This page is my evolving edit of the city
+                through the lens of ethical living, feminism, beauty, and thoughtful pleasure.
+            </p>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        fetch('header.html')
+          .then(response => response.text())
+          .then(data => {
+              document.getElementById('header-placeholder').innerHTML = data;
+          });
+
+        fetch('footer.html')
+          .then(response => response.text())
+          .then(data => {
+              document.getElementById('footer-placeholder').innerHTML = data;
+          });
+    </script>
+</body>
+</html>

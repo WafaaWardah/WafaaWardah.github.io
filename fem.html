@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feminism | Wafaa Wardah</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+
+        <!-- Intro -->
+        <section>
+            <h1>Feminism</h1>
+            <p class="intro">
+                A commitment to the dignity, freedom, safety, and full humanity of women and girls.
+            </p>
+        </section>
+
+        <!-- What is feminism -->
+        <section>
+            <h2>What is feminism?</h2>
+            <p>
+                Feminism is the belief that women and girls deserve equal rights, equal respect, equal freedom,
+                and equal opportunity. It is also the recognition that these things have not been granted fairly,
+                and that social, cultural, political, and economic systems often continue to disadvantage women.
+            </p>
+        </section>
+
+        <!-- Why feminism -->
+        <section>
+            <h2>Why feminism?</h2>
+            <p>
+                For me, feminism is moral clarity about the reality of women’s lives. It means recognizing how often women are expected
+                to endure, accommodate, forgive, shrink, and carry more than is fair. It means taking women seriously:
+                our intellect, our labour, our safety, our ambition, and our right to live fully as human beings.
+            </p>
+        </section>
+
+        <!-- Areas -->
+        <section>
+            <h2>Areas of concern</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>Freedom & Autonomy</h3>
+                    <p>
+                        Women should be free to shape their own lives: their education, careers, relationships,
+                        bodies, beliefs, and futures. Autonomy is foundational, not optional.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Violence Against Women</h3>
+                    <p>
+                        Gender-based violence remains one of the clearest signs that women’s safety is not yet treated
+                        as fully non-negotiable. A just society does not tolerate violence, coercion, or fear as part of womanhood.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Girls’ Rights</h3>
+                    <p>
+                        Feminism includes girls: their education, bodily integrity, safety, confidence, and ability to grow
+                        without being diminished, controlled, or harmed.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Work & Recognition</h3>
+                    <p>
+                        Women’s work, paid and unpaid, is too often undervalued. Feminism asks for fair opportunity,
+                        fair pay, respect, and recognition across all forms of labour.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Representation</h3>
+                    <p>
+                        Who is heard, believed, funded, promoted, and taken seriously matters. Representation affects what
+                        becomes possible, visible, and normal for women and girls.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Culture & Everyday Life</h3>
+                    <p>
+                        Feminism is not only about laws and institutions. It also lives in daily life: in expectations,
+                        language, relationships, beauty standards, care work, and the quiet ways women are asked to shrink.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Closing -->
+        <section>
+            <h2>A personal note</h2>
+            <p>
+                I see feminism as part of ethical living: a refusal to look away from unnecessary harm, and a commitment
+                to living in a way that is more honest, more conscious, and more worthy of women’s full humanity.
+            </p>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        fetch('header.html')
+          .then(response => response.text())
+          .then(data => {
+              document.getElementById('header-placeholder').innerHTML = data;
+          });
+        
+        fetch('footer.html')
+          .then(response => response.text())
+          .then(data => {
+              document.getElementById('footer-placeholder').innerHTML = data;
+          });
+    </script>
+</body>
+</html>

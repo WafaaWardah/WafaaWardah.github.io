@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegan Living | Wafaa Wardah</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+
+        <!-- Intro -->
+        <section>
+            <h1>Vegan Living</h1>
+            <p class="intro">
+                A way of living that seeks to reduce harm, without losing beauty, pleasure, or elegance.
+            </p>
+        </section>
+
+        <!-- What is veganism -->
+        <section>
+            <p>
+                Veganism is a way of living that avoids, as far as possible and practical, the use of animals
+                for food, clothing, or any other purpose. It is not about perfection, but about intention:
+                making choices that reduce unnecessary harm.
+            </p>
+        </section>
+
+        <!-- Why -->
+        <section>
+            <h2>Why?</h2>
+            <p>
+                For me, veganism is not a restriction, but a refinement. It aligns daily choices with values:
+                compassion, responsibility, and awareness. It is about recognizing that what we consume has
+                consequences, and choosing to live in a way that feels both conscious and considered.
+            </p>
+        </section>
+
+        <!-- Sections -->
+        <section>
+            <h2>Areas of everyday life</h2>
+
+            <div class="cards">
+
+                <!-- Food -->
+                <div class="card">
+                    <h3>Food</h3>
+                    <p>
+                        Choosing plant-based meals that are nourishing, satisfying, and aligned with a more
+                        compassionate way of living. Not about limitation, but about discovering better alternatives.
+                    </p>
+                </div>
+
+                <!-- Clothing -->
+                <div class="card">
+                    <h3>Clothing</h3>
+                    <p>
+                        Avoiding materials such as leather, wool, silk, and fur, and choosing thoughtful alternatives.
+                        Focusing on quality, longevity, and aesthetics without compromise.
+                    </p>
+                </div>
+
+                <!-- Beauty -->
+                <div class="card">
+                    <h3>Beauty</h3>
+                    <p>
+                        Supporting cruelty-free and vegan skincare and cosmetics. Understanding what goes into products,
+                        and choosing brands that respect both people and animals.
+                    </p>
+                </div>
+
+                <!-- Lifestyle -->
+                <div class="card">
+                    <h3>Everyday Choices</h3>
+                    <p>
+                        From home products to travel decisions, small choices accumulate. Vegan living extends into the
+                        details of how we move through the world.
+                    </p>
+                </div>
+
+                <!-- Zoos -->
+                <div class="card">
+                    <h3>Zoos & Entertainment</h3>
+                    <p>
+                        Questioning spaces where animals are kept for display or profit. Choosing instead to support
+                        environments that respect autonomy and natural living conditions.
+                    </p>
+                </div>
+
+                <!-- Ethics -->
+                <div class="card">
+                    <h3>Ethical Perspective</h3>
+                    <p>
+                        At its core, veganism is about expanding empathy beyond convenience. It is a quiet but powerful
+                        shift in how we relate to other living beings.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        fetch('header.html')
+          .then(response => response.text())
+          .then(data => {
+              document.getElementById('header-placeholder').innerHTML = data;
+          });
+        
+        fetch('footer.html')
+          .then(response => response.text())
+          .then(data => {
+              document.getElementById('footer-placeholder').innerHTML = data;
+          });
+    </script>
+
+</body>
+</html>
